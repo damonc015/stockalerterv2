@@ -1,0 +1,37 @@
+.container {
+  font-size: 1.5rem;
+  width: inherit;
+  padding: 1.5rem 0rem;
+  transition: all 0.3s ease-out;
+  color: rgb(71, 71, 71);
+}
+.container:hover {
+  color: #00b075;
+  background-color: rgba(9, 109, 73, 0.05);
+  border-right: 3px solid #00b075;
+  padding: 1.5rem 1rem;
+}
+
+.icon {
+  padding: 0 2rem;
+}
+.word {
+  overflow: hidden;
+}
+
+@media (max-width: 1350px) {
+  .container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .word {
+    display: none;
+  }
+}
+
+@media (max-width: 650px) {
+    .icon{
+        padding: 0 1rem;
+    }
+}

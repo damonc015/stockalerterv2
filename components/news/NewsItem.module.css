@@ -1,0 +1,29 @@
+.imageContainer {
+    padding: 0 .5rem 0 1rem;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.imageContainer img{
+    object-fit: cover;
+}
+.textContainer{
+    padding: .5rem;
+}
+.snippet{
+    overflow: hidden;
+}
+@media (max-width: 1000px) {
+    .snippet{
+        height: 0;
+    }
+}
+@media (max-width: 650px) {
+    .imageContainer{
+        display: none;
+    }
+    .textContainer{
+        padding: 1rem;
+    }
+}

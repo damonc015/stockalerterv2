@@ -1,0 +1,182 @@
+.infoContainer {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  width: 30%;
+  position: absolute;
+  right: 2%;
+  height: inherit;
+  transition: all 0.5s ease-out;
+}
+.hideContainer {
+  position: absolute;
+  right: 2%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  background-color: white;
+  width: 30%;
+  height: inherit;
+  background-color: transparent;
+  transition: all 0.5s ease-out;
+}
+.infoIcon {
+  position: absolute;
+  left: 2rem;
+  padding-top: 2px;
+}
+.infoIcon:hover {
+  filter: invert(100%);
+  cursor: pointer;
+}
+
+.infoTitle {
+  padding: 0.8rem;
+  font-size: 1.25rem;
+  width: 100%;
+  text-align: center;
+  background-image: radial-gradient(
+    circle,
+    #4fc98d,
+    #4bc998,
+    #4ac9a1,
+    #4bc9aa,
+    #4fc9b2
+  );
+}
+.columnNbutton {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  transition: all 0.5s ease-out;
+}
+.hideColNButton {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 0;
+  overflow: hidden;
+  transition: all 0.5s ease-out;
+}
+
+.columns {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 1rem 0;
+  /* overflow-y: scroll; */
+  overflow: hidden;
+}
+.column {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 48%;
+}
+.columnItem {
+  position: relative;
+  width: 100%;
+  height: 2.75rem;
+  padding-left: 0.5rem;
+}
+.columnItem::before {
+  content: "";
+  position: absolute;
+  bottom: -0.5rem;
+  right: 0;
+  width: 60%;
+  border-bottom: 1px solid;
+}
+.columnItem::after {
+  content: "";
+  position: absolute;
+  bottom: -0.2rem;
+  right: 0;
+  width: 75%;
+  border-bottom: 1px solid;
+}
+.columnItem p {
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.columnItemWord {
+  position: absolute;
+  font-style: italic;
+  font-size: 0.9rem;
+  top: 0;
+  left: 0;
+  padding-left: 0.5rem;
+}
+.columnItemValue {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding-right: 0.2rem;
+  font-size: 0.9rem;
+}
+
+.buttonContainer {
+  width: 100%;
+  padding: 0.8rem;
+  text-align: center;
+}
+.button {
+  background-image: radial-gradient(
+    circle,
+    #4fc98d,
+    #4bc998,
+    #4ac9a1,
+    #4bc9aa,
+    #4fc9b2
+  );
+  border: none;
+  font-family: "Roboto Slab", serif;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  width: 80%;
+  padding: 0.8rem;
+  border-radius: 10px;
+}
+
+.button:hover {
+  background-image: none;
+  background-color: rgba(9, 109, 73, 0.5);
+  color: white;
+}
+
+@media (max-width: 1200px) {
+  .infoContainer {
+    width: 50%;
+  }
+}
+@media (max-width: 800px) {
+  .infoContainer {
+    width: 100%;
+    height: 50%;
+    position: relative;
+    right: auto;
+  }
+  .hideContainer {
+    width: 94%;
+    position: relative;
+    right: auto;
+  }
+  .columnNbutton {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.308);
+  }
+  .hideColNButton {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.308);
+  }
+}

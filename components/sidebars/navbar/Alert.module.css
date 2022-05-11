@@ -1,0 +1,21 @@
+.container{
+    margin: 0 0 0 .5rem;
+}
+.bell{
+    font-size: 1.5rem;
+}
+.bellAlt{
+    font-size: 2rem;
+    color: #da4343;
+}
+
+@media (max-width: 1350px) {
+    .container{
+        margin: 0;
+    }
+}
+@media (max-width: 650px) {
+    .bell{
+        font-size: 1.25rem;
+    }
+}

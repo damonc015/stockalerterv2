@@ -1,0 +1,21 @@
+.listitem {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5rem 0;
+}
+.listitemAlt {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: #dee1e4;
+}
+
+.listitemComp {
+    width: 25%;
+}

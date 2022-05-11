@@ -1,0 +1,22 @@
+.container{
+    height: auto;
+    width: inherit;
+    position: relative;
+    z-index: 1;
+}
+
+.chartNinfo{
+    height: 70vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (max-width: 800px) {
+    .chartNinfo{
+        flex-direction: column;
+        height: auto;
+        gap:.75rem;
+    }
+}

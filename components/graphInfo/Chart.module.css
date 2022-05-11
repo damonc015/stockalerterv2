@@ -1,0 +1,13 @@
+.chartContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 96%;
+  height: 100%;
+}
+
+@media (max-width: 800px) {
+  .chartContainer {
+    height: 42vh;
+  }
+}
