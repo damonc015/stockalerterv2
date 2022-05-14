@@ -3,6 +3,7 @@ import Head from "next/head";
 import { Fragment } from "react";
 import { GlobalContextProvider } from "../store/globalProvider";
 import { SearchContextProvider } from "../store/searchProvider";
+import {WatchContextProvider} from "../store/watchlistProvider"
 
 function MyApp({ Component, pageProps }) {
   return (
@@ -56,7 +57,9 @@ function MyApp({ Component, pageProps }) {
       </Head>
       <GlobalContextProvider>
         <SearchContextProvider>
-          <Component {...pageProps} />
+          <WatchContextProvider>
+            <Component {...pageProps} />
+          </WatchContextProvider>
         </SearchContextProvider>
       </GlobalContextProvider>
     </Fragment>

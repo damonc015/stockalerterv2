@@ -7,11 +7,10 @@ import classes from "./Info.module.css";
 import { v4 as uuidv4 } from "uuid";
 
 const Info = () => {
-  const [graphInfo, setGraphInfo] = useState("");
   const [showInfo, setShowInfo] = useState(true);
   const { isNight } = useContext(GlobalContext);
   const { stockHome } = useContext(SearchContext);
-  const { watchlist, setWatchlist } = useContext(WatchContext);
+  const { watchlist, setWatchlist, graphInfo } = useContext(WatchContext);
 
   function addWatch() {
     if (watchlist.filter((item) => item.name === stockHome.name).length > 0)
@@ -31,15 +30,6 @@ const Info = () => {
     return x.toLocaleString();
   }
 
-  useEffect(() => {
-    if (!stockHome) return;
-    fetch(
-      `https://financialmodelingprep.com/api/v3/quote/${stockHome.symbol}?apikey=4c403e64075f1d5283c4aaef93a6fab6`
-    )
-      .then((response) => response.json())
-      .then((data) => setGraphInfo(data[0]))
-      .catch((e) => console.log("Graph Data unavailable"));
-  }, [stockHome]);
 
   if (!graphInfo) {
     return (

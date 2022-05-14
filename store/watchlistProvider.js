@@ -3,31 +3,11 @@ import { v4 as uuidv4 } from "uuid";
 
 const WatchContext = createContext();
 export function WatchContextProvider(props) {
-  const [watch, setWatch] = useState([
-    { name: "dog", symbol: "DOG", price: 2, id: uuidv4() },
-    { name: "cat", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "cab", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "bird", symbol: "BIRD", price: 2, id: uuidv4() },
-    { name: "dog", symbol: "DOG", price: 2, id: uuidv4() },
-    { name: "cat", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "cab", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "bird", symbol: "BIRD", price: 2, id: uuidv4() },
-    { name: "dog", symbol: "DOG", price: 2, id: uuidv4() },
-    { name: "cat", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "cab", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "bird", symbol: "BIRD", price: 2, id: uuidv4() },
-    { name: "dog", symbol: "DOG", price: 2, id: uuidv4() },
-    { name: "cat", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "cab", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "bird", symbol: "BIRD", price: 2, id: uuidv4() },
-    { name: "dog", symbol: "DOG", price: 2, id: uuidv4() },
-    { name: "cat", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "cab", symbol: "CAT", price: 2, id: uuidv4() },
-    { name: "bird", symbol: "BIRD", price: 2, id: uuidv4() },
-  ]);
+  const [watch, setWatch] = useState([]);
   const [date, setDate] = useState("3month");
   const [searchWatch, setSearchWatch] = useState("");
   const [filteredSearchWatch, setFilteredSearchWatch] = useState([]);
+  const [graphInfo, setGraphInfo] = useState("");
   const [sortWatch, setSortWatch] = useState("recent");
 
   // Date Range for Api
@@ -81,6 +61,8 @@ export function WatchContextProvider(props) {
   const context = {
     watchlist: watch,
     setWatchlist: setWatch,
+    graphInfo,
+    setGraphInfo,
     date: date,
     setDateRange: setDate,
     getDate: findDateRange,

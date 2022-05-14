@@ -8,7 +8,8 @@ const Searchbar = (props) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const { allStocks, setStockHome, setStockNews, scrollTop } = useContext(SearchContext);
+  const { allStocks, setStockHome, setStockNews, scrollTop } =
+    useContext(SearchContext);
 
   const defaultSelect = (e) => {
     e.preventDefault();
@@ -96,15 +97,17 @@ const Searchbar = (props) => {
             {searchResults.slice(0, 8).map((stock) => {
               const { name, symbol } = stock;
               return (
-                <li
-                  className={classes.searchItem}
-                  key={symbol}
-                  onClick={() => selectStock(stock)}
-                >
-                  <p>
-                    {name} ({symbol})
-                  </p>
-                </li>
+                <Link href={`/${symbol}`} key={symbol}>
+                  <li
+                    className={classes.searchItem}
+                    key={symbol}
+                    onClick={() => selectStock(stock)}
+                  >
+                    <p>
+                      {name} ({symbol})
+                    </p>
+                  </li>
+                </Link>
               );
             })}
           </ul>

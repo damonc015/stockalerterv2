@@ -6,7 +6,6 @@ import Graph from "../components/graphInfo";
 import { useEffect, useContext } from "react";
 import GlobalContext from "../store/globalProvider";
 import SearchContext from "../store/searchProvider";
-import { WatchContextProvider } from "../store/watchlistProvider";
 
 export default function Home() {
   const { isNight } = useContext(GlobalContext);
@@ -50,13 +49,26 @@ export default function Home() {
             page="dashboard"
           ></Topbar>
           <div className="graphContainer">
-            <WatchContextProvider>
-              <Graph></Graph>
-              <Watchlist></Watchlist>
-            </WatchContextProvider>
+            <Graph></Graph>
+            <Watchlist></Watchlist>
           </div>
         </div>
       </div>
     </div>
   );
+}
+export async function getStaticProps(context) {
+  let stocklist;
+  try {
+    const res = await fetch(
+      "https://financialmodelingprep.com/api/v3/available-traded/list?apikey=4c403e64075f1d5283c4aaef93a6fab6"
+    );
+    stocklist = await res.json();
+  } catch (e) {
+    console.log(e);
+  }
+  return {
+    props: { stocklist: stocklist },
+    revalidate: 600,
+  };
 }

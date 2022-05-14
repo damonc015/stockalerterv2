@@ -7,7 +7,7 @@ import SearchContext from "../../store/searchProvider";
 import GlobalContext from "../../store/globalProvider";
 
 const News = (props) => {
-  const { articles } = props;
+  const { articles, stocklist } = props;
 
   if (!articles.data || articles.data.length < 1) {
     return <Loadingpage />;
@@ -18,12 +18,7 @@ const News = (props) => {
 
   useEffect(() => {
     if (allStocks) return;
-    fetch(
-      "https://financialmodelingprep.com/api/v3/available-traded/list?apikey=4c403e64075f1d5283c4aaef93a6fab6"
-    )
-      .then((response) => response.json())
-      .then((data) => setAllStocks(data))
-      .catch((e) => console.log(e));
+    setAllStocks(stocklist);
   }, [allStocks]);
 
   return (
@@ -43,7 +38,7 @@ const News = (props) => {
 export default News;
 
 export async function getStaticProps(context) {
-  let data;
+  let data, stocklist;
   let arr = ["SPY", "AAPL", "DIA", "NDAQ"];
   let rand = Math.floor(Math.random() * arr.length);
   let possibleSymbols = arr[rand];
@@ -56,8 +51,16 @@ export async function getStaticProps(context) {
   } catch (e) {
     console.log(e);
   }
+  try {
+    const res = await fetch(
+      "https://financialmodelingprep.com/api/v3/available-traded/list?apikey=4c403e64075f1d5283c4aaef93a6fab6"
+    );
+    stocklist = await res.json();
+  } catch (e) {
+    console.log(e);
+  }
   return {
-    props: { articles: data },
+    props: { articles: data, stocklist: stocklist },
     revalidate: 600,
   };
 }
