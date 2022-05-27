@@ -1,3 +1,28 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:999131587261616eebe0c68edb7b6f11f0101c6464ad93f04737c86dbdb53aa2
-size 870
+import "../styles/globals.css";
+import Head from "next/head";
+import { Fragment } from "react";
+import { GlobalContextProvider } from "../store/globalProvider";
+import { SearchContextProvider } from "../store/searchProvider";
+import {WatchContextProvider} from "../store/watchlistProvider";
+import {Provider} from "next-auth/client";
+
+function MyApp({ Component, pageProps }) {
+  return (
+    <Fragment>
+      <Head>
+        <link rel="icon" href="/portfolioIcon.ico" />
+      </Head>
+      <Provider session={pageProps.session}>
+        <GlobalContextProvider>
+          <SearchContextProvider>
+            <WatchContextProvider>
+              <Component {...pageProps} />
+            </WatchContextProvider>
+          </SearchContextProvider>
+        </GlobalContextProvider>
+      </Provider>
+    </Fragment>
+  );
+}
+
+export default MyApp;

@@ -1,3 +1,29 @@
-version https://git-lfs.github.com/spec/v1
-oid sha256:cac9d89f2438eeb97bda3eb74740cbf582587966c32d62de3c3a5fa74ab9b55f
-size 838
+import NextAuth from "next-auth";
+import Providers from "next-auth/providers";
+import { connect } from "../database";
+
+export default NextAuth({
+  session: { jwt: true },
+  providers: [
+    Providers.Credentials({
+      async authorize(credentials) {
+        const client = await connect();
+        const usernames = client.db().collection("user");
+        const user = await usernames.findOne({
+          Username: credentials.username,
+        });
+        const password = await usernames.findOne({
+          Password: credentials.password,
+        });
+        if (!user) {
+          throw new Error("Invalid Username");
+        }
+        if (!password) {
+          throw new Error("Invalid Password");
+        }
+        client.close();
+        return { username: user.username };
+      },
+    }),
+  ],
+});
