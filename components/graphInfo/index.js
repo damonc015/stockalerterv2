@@ -1,12 +1,13 @@
 import classes from "./index.module.css";
 import Title from "./Title";
-import Chart from "./Chart";
-import Info from "./Info";
 import { Fragment, useContext } from "react";
 import SearchContext from "../../store/searchProvider";
+import dynamic from "next/dynamic";
 
 const Graph = () => {
   const { topPageRef } = useContext(SearchContext);
+  const DynamicChart = dynamic(() => import("./Chart"));
+  const DynamicInfo = dynamic(() => import("./Info"));
   return (
     <Fragment>
       <div
@@ -16,8 +17,8 @@ const Graph = () => {
       <div className={classes.container}>
         <Title></Title>
         <div className={classes.chartNinfo}>
-          <Chart></Chart>
-          <Info></Info>
+          <DynamicChart />
+          <DynamicInfo />
         </div>
       </div>
     </Fragment>

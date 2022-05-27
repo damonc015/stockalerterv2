@@ -28,10 +28,11 @@ const Title = () => {
               onChange={(event) => changeDate(event.target.value)}
               style={isNight ? { color: "white" } : { color: "black" }}
             >
-              <option value="month">1M</option>
-              <option value="3month">3M</option>
-              <option value="6month">6M</option>
               <option value="year">1Y</option>
+              <option value="2year">2Y</option>
+              <option value="3year">3Y</option>
+              <option value="4year">4Y</option>
+              <option value="5year">5Y</option>
             </select>
           </form>
         </div>
@@ -52,10 +53,11 @@ const Title = () => {
             onChange={(event) => changeDate(event.target.value)}
             style={isNight ? { color: "white" } : { color: "black" }}
           >
-            <option value="month">1M</option>
-            <option value="3month">3M</option>
-            <option value="6month">6M</option>
-            <option value="year">1Y</option>
+              <option value="year">1Y</option>
+              <option value="2year">2Y</option>
+              <option value="3year">3Y</option>
+              <option value="4year">4Y</option>
+              <option value="5year">5Y</option>
           </select>
         </form>
       </div>

@@ -1,30 +1,26 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { Line } from "react-chartjs-2";
-import "chart.js/auto";
+import {
+  Chart as ChartJS,
+  LineElement,
+  PointElement,
+  LinearScale,
+  CategoryScale,
+  Title,
+} from "chart.js";
 import classes from "./Chart.module.css";
 import SearchContext from "../../store/searchProvider";
 import WatchContext from "../../store/watchlistProvider";
 import GlobalContext from "../../store/globalProvider";
 
+ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Title);
+
 const Chart = () => {
-  const [graphData, setGraphData] = useState("");
   const { isNight } = useContext(GlobalContext);
   const { stockHome } = useContext(SearchContext);
-  const { date, getDate } = useContext(WatchContext);
+  const { graphData } = useContext(WatchContext);
 
-  useEffect(() => {
-    if (!stockHome) return;
-    fetch(
-      `https://financialmodelingprep.com/api/v3/historical-price-full/${
-        stockHome.symbol
-      }?${getDate()}&apikey=0aba0cc10f259f7f99c4762c7b5aa6ae`
-    )
-      .then((response) => response.json())
-      .then((data) => setGraphData(data.historical))
-      .catch((e) => console.log(e));
-  }, [stockHome, date]);
-
-  if (!graphData)
+  if (!graphData || graphData["Note"])
     return (
       <div style={{ textAlign: "center" }}>
         Stock data not available, try again later
@@ -34,14 +30,14 @@ const Chart = () => {
   function filterGraphLabels() {
     if (!graphData) return;
     let graphLabels = graphData.map((item) => {
-      return item.label;
+      return item[0];
     });
     return graphLabels.reverse();
   }
   function filterGraphPrices() {
     if (!graphData) return;
     let graphPrices = graphData.map((item) => {
-      return Number.parseFloat(item.close).toFixed(2);
+      return Number.parseFloat(item[1]["4. close"]).toFixed(2);
     });
     return graphPrices.reverse();
   }
@@ -78,7 +74,8 @@ const Chart = () => {
   };
 
   function lineColor() {
-    if (graphData[0] > graphData[graphData.length - 1]) return "#52ad59";
+    if (graphData[0][1].close > graphData[graphData.length - 1][1].close)
+      return "#52ad59";
     return "red";
   }
 

@@ -1,13 +1,11 @@
 import { createContext, useState } from "react";
+import { useSession, getSession } from "next-auth/client";
 
 const GlobalContext = createContext();
 export function GlobalContextProvider(props) {
   const [night, setNight] = useState(false);
-  const [alert, setAlert] = useState(true);
+  const [firstTime, setFirstTime] = useState(true);
 
-  const apiKeyFinnhubOne = "4c403e64075f1d5283c4aaef93a6fab6";
-  const apiKeyFinnhubTwo = "0aba0cc10f259f7f99c4762c7b5aa6ae";
-  const newsApiKey = "YXZ3J3Px3aMVE1bSLY9LUOatT6I9arcoxTfQg7wl";
   const websocketKey = "wss://ws.finnhub.io?token=c868vsaad3i9fvji44qg";
 
   function nightHandler() {
@@ -17,8 +15,8 @@ export function GlobalContextProvider(props) {
   const context = {
     isNight: night,
     changeNight: nightHandler,
-    alert,
-    setAlert
+    firstTime, 
+    setFirstTime
   };
 
   return (

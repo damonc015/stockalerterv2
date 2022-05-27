@@ -8,8 +8,7 @@ const Searchbar = (props) => {
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState([]);
 
-  const { allStocks, setStockHome, setStockNews, scrollTop } =
-    useContext(SearchContext);
+  const { allStocks, setStockHome, setStockNews } = useContext(SearchContext);
 
   const defaultSelect = (e) => {
     e.preventDefault();
@@ -22,7 +21,6 @@ const Searchbar = (props) => {
 
   const selectStock = (selectedStock) => {
     if (page === "dashboard") {
-      scrollTop();
       setStockHome(selectedStock);
     }
     if (page === "news") {
@@ -33,28 +31,26 @@ const Searchbar = (props) => {
 
   useEffect(() => {
     // Search Filter
-    (function filterNames() {
-      try {
-        setSearchResults(
-          allStocks.filter((val) => {
-            if (search === "") {
-              return null;
-            } else if (
-              val.symbol.toLowerCase().includes(search.toLowerCase()) ||
-              val.name.toLowerCase().includes(search.toLowerCase())
-            ) {
-              return val;
-            } else {
-              return null;
-            }
-          })
-        );
-      } catch {
-        console.log("did not connect to api");
-      }
-    })();
+    try {
+      setSearchResults(
+        allStocks.filter((val) => {
+          if (search === "") {
+            return null;
+          } else if (
+            val.symbol.toLowerCase().includes(search.toLowerCase()) ||
+            val.name.toLowerCase().includes(search.toLowerCase())
+          ) {
+            return val;
+          } else {
+            return null;
+          }
+        })
+      );
+    } catch {
+      console.log("did not connect to api");
+    }
   }, [search]);
-
+  
   return (
     <div className={classes.searchContainer}>
       <form

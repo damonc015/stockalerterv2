@@ -22,6 +22,7 @@ const List = () => {
             symbol={item.symbol}
             name={item.name}
             price={item.price}
+            isNotif={item.isNotif}
           ></Listitem>
         );
       });
@@ -40,6 +41,7 @@ const List = () => {
               symbol={item.symbol}
               name={item.name}
               price={item.price}
+              isNotif={item.isNotif}
             ></Listitem>
           );
         })}
@@ -57,6 +59,7 @@ const List = () => {
             symbol={item.symbol}
             name={item.name}
             price={item.price}
+            isNotif={item.isNotif}
           ></Listitem>
         );
       });
@@ -75,6 +78,7 @@ const List = () => {
               symbol={item.symbol}
               name={item.name}
               price={item.price}
+              isNotif={item.isNotif}
             ></Listitem>
           );
         })}

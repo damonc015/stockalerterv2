@@ -1,10 +1,11 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useContext } from "react";
 import GlobalContext from "../../store/globalProvider";
 import SearchContext from "../../store/searchProvider";
 import WatchContext from "../../store/watchlistProvider";
 import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 import classes from "./Info.module.css";
 import { v4 as uuidv4 } from "uuid";
+import cloneDeep from "lodash/cloneDeep";
 
 const Info = () => {
   const [showInfo, setShowInfo] = useState(true);
@@ -15,12 +16,13 @@ const Info = () => {
   function addWatch() {
     if (watchlist.filter((item) => item.name === stockHome.name).length > 0)
       return;
-    let copyWatch = [...watchlist];
+    let copyWatch = cloneDeep(watchlist);
     copyWatch.push({
       name: stockHome.name,
       symbol: stockHome.symbol,
       price: stockHome.price,
       id: uuidv4(),
+      isNotif: "false"
     });
     return setWatchlist(copyWatch);
   }
@@ -30,8 +32,7 @@ const Info = () => {
     return x.toLocaleString();
   }
 
-
-  if (!graphInfo) {
+  if (!graphInfo || !stockHome) {
     return (
       <div style={{ padding: "2rem" }}>
         Stock information not available try again later
@@ -57,7 +58,7 @@ const Info = () => {
         >
           {showInfo ? <AiOutlineMinus /> : <AiOutlinePlus />}
         </span>
-        {graphInfo.symbol}
+        {graphInfo[0].symbol}
       </div>
 
       <div
@@ -68,44 +69,46 @@ const Info = () => {
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}>Price</span>
               <span className={classes.columnItemValue}>
-                {graphInfo.price
-                  ? "$" + Number.parseFloat(graphInfo.price)
+                {graphInfo[0].price
+                  ? "$" + Number.parseFloat(graphInfo[0].price)
                   : "N/A"}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}> Market Cap</span>
               <span className={classes.columnItemValue}>
-                {graphInfo.marketCap
-                  ? "$" + numComma(graphInfo.marketCap)
+                {graphInfo[0].marketCap
+                  ? "$" + numComma(graphInfo[0].marketCap)
                   : "N/A"}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}>Volume</span>
               <span className={classes.columnItemValue}>
-                {graphInfo.volume ? numComma(graphInfo.volume) : "N/A"}
+                {graphInfo[0].volume ? numComma(graphInfo[0].volume) : "N/A"}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}> Avg Volume</span>
               <span className={classes.columnItemValue}>
-                {graphInfo.avgVolume ? numComma(graphInfo.avgVolume) : "N/A"}
+                {graphInfo[0].avgVolume
+                  ? numComma(graphInfo[0].avgVolume)
+                  : "N/A"}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}>Total Shares</span>
               <span className={classes.columnItemValue}>
-                {graphInfo.sharesOutstanding
-                  ? numComma(graphInfo.sharesOutstanding)
+                {graphInfo[0].sharesOutstanding
+                  ? numComma(graphInfo[0].sharesOutstanding)
                   : "N/A"}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}>P/E Ratio</span>
               <span className={classes.columnItemValue}>
-                {graphInfo.pe
-                  ? Number.parseFloat(graphInfo.pe).toFixed(3)
+                {graphInfo[0].pe
+                  ? Number.parseFloat(graphInfo[0].pe).toFixed(3)
                   : "N/A"}
               </span>
             </p>
@@ -114,37 +117,37 @@ const Info = () => {
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}>Price Avg 50D</span>
               <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo.priceAvg50).toFixed(2)}
+                ${Number.parseFloat(graphInfo[0].priceAvg50).toFixed(2)}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}>Price Avg 200D</span>
               <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo.priceAvg200).toFixed(2)}
+                ${Number.parseFloat(graphInfo[0].priceAvg200).toFixed(2)}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}>Year High</span>
               <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo.yearHigh).toFixed(2)}
+                ${Number.parseFloat(graphInfo[0].yearHigh).toFixed(2)}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}> Year Low</span>
               <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo.yearLow).toFixed(2)}
+                ${Number.parseFloat(graphInfo[0].yearLow).toFixed(2)}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}> Day High</span>
               <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo.dayHigh).toFixed(2)}
+                ${Number.parseFloat(graphInfo[0].dayHigh).toFixed(2)}
               </span>
             </p>
             <p className={classes.columnItem}>
               <span className={classes.columnItemWord}>Day Low</span>
               <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo.dayLow).toFixed(2)}
+                ${Number.parseFloat(graphInfo[0].dayLow).toFixed(2)}
               </span>
             </p>
           </div>

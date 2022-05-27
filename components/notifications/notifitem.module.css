@@ -1,0 +1,38 @@
+.notifItemContainer {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  width: 100%;
+  padding: 0.5rem 0;
+  background-color: #dee1e4;
+}
+.alert {
+  animation: alert 1.5s ease-out infinite alternate;
+}
+.notifItemContainer input {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  padding-left: 0.5rem;
+  width: 6rem;
+  height: 1.5rem;
+}
+.notifItemContainer select {
+  outline: none;
+  border: none;
+  border-radius: 4px;
+  width: 5rem;
+  border: 1px solid rgba(0, 0, 0, 0.4);
+}
+.notifItemControlContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 60%;
+}
+@keyframes alert {
+  to {
+    background-color: red;
+  }
+}

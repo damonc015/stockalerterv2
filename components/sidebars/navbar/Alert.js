@@ -1,17 +1,15 @@
-import { VscBell, VscBellDot } from "react-icons/vsc";
-import { useContext } from "react";
-import GlobalContext from "../../../store/globalProvider";
+import { VscBellDot } from "react-icons/vsc";
 import classes from "./Alert.module.css";
+import Link from "next/link";
 
 const Alert = () => {
-  const { alert } = useContext(GlobalContext);
   return (
     <div className={classes.container}>
-      {alert ? (
-        <VscBellDot className={classes.bellAlt}></VscBellDot>
-      ) : (
-        <VscBell className={classes.bell}></VscBell>
-      )}
+      <Link href={"/"} passHref>
+        <a style={{ width: "inherit", height: "inherit" }}>
+          <VscBellDot className={classes.bellAlt}></VscBellDot>
+        </a>
+      </Link>
     </div>
   );
 };

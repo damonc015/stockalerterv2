@@ -1,21 +1,3 @@
-import { useContext } from "react";
-import Topbar from "../../components/sidebars/topbar";
-import Navbar from "../../components/sidebars/navbar";
-import GlobalContext from "../../store/globalProvider";
-
-const About = () => {
-  const { isNight } = useContext(GlobalContext);
-  return (
-    <div
-      className="container"
-      style={isNight ? { backgroundColor: "#141518", color: "#FAFAFA" } : null}
-    >
-      <Navbar />
-      <div className="topContainer">
-        <Topbar searchPlaceholder="Search news on a stock" page="news"></Topbar>
-      </div>
-    </div>
-  );
-};
-
-export default About;
+version https://git-lfs.github.com/spec/v1
+oid sha256:bff2fab083ee662dda8497080705bf8f7b7dee493203efc12eb3d641044cca24
+size 1028

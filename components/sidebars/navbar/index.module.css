@@ -5,6 +5,7 @@
     overflow: hidden;
     z-index: 1000;
     box-shadow: 4px 8vh 12px 0px #9b9b9b;
+    font-family: 'Raleway', sans-serif;
 }
 
 @media (max-width: 1350px) {

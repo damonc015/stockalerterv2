@@ -1,0 +1,43 @@
+.notifcationContainer {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem 0 1.5rem;
+  font-family: "Raleway", sans-serif;
+}
+.notifSubContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  width: 75%;
+  gap: 1rem;
+}
+.notifTitle {
+  width: 100%;
+  padding-left: 1rem;
+  font-size: 0.95rem;
+  color: rgba(0, 0, 0, 0.85);
+  letter-spacing: 0.05rem;
+  height: 6vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-image: radial-gradient(
+    circle,
+    #3cc380,
+    #3ac18c,
+    #39c096,
+    #3ac1a0,
+    #3cc3a9
+  );
+}
+@media (max-width: 800px) {
+  .notifSubContainer {
+    width: 100%;
+  }
+}

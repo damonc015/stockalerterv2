@@ -12,6 +12,7 @@
   flex-direction: row;
   width: 80%;
   padding-left: 4rem;
+  font-family: 'Raleway', sans-serif;
 }
 .date {
   display: flex;

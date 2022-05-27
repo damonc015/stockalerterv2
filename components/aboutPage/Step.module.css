@@ -1,0 +1,28 @@
+.aboutContainer {
+  width: 100%;
+  height: 92vh;
+  overflow-y: scroll;
+  font-family: "Raleway", sans-serif;
+}
+.stepContainer {
+  width: 90%;
+  height: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: .75rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.322);
+  margin: 0 auto;
+}
+.stepTitle {
+}
+.imageContainer {
+  height: 50vh;
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+}
+.stepDescription {
+}

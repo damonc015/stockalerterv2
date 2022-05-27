@@ -64,15 +64,180 @@ select option {
   justify-content: center;
   align-items: center;
 }
+.firstTimeMsgContainer {
+  position: absolute;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.151);
+  z-index: 2000;
+}
+.firstTimeMsg {
+  position: relative;
+  height: auto;
+  padding: 3rem;
+  background-color: white;
+  border-radius: 6px;
+  font-family: "Raleway", sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.cancel{
+  position: absolute;
+  top: .75rem;
+  right: .75rem;
+}
+.cancel:hover{
+  transform: scale(1.1);
+  cursor: pointer;
+}
 .topContainer {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
   width: 100%;
+  position: relative;
 }
-.graphContainer{
+.graphContainer {
   height: 92vh;
   width: 100%;
   overflow-y: scroll;
+}
+
+.loginForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2.5rem;
+  background-color: #d8d8d8;
+  border-radius: 10px;
+  width: 50%;
+  padding: 3rem 1.5rem;
+  font-family: "Raleway", sans-serif;
+  position: relative;
+  z-index: 2;
+}
+.loginForm > * {
+  width: 80%;
+}
+.loginTitle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  font-family: "Raleway", sans-serif;
+  gap: 0.5rem;
+  transition: all 0.3s ease-out;
+  position: relative;
+  z-index: 2;
+}
+@keyframes changeBell {
+  0% {
+    color: black;
+    transform: rotateZ(0);
+  }
+  12.5% {
+    color: #da4343;
+    transform: rotateZ(0);
+  }
+  25% {
+    color: #da4343;
+    transform: rotateZ(35deg);
+  }
+  37.5% {
+    color: #da4343;
+    transform: rotateZ(-35deg);
+  }
+  50% {
+    color: #da4343;
+    transform: rotateZ(0deg);
+  }
+}
+.inputContainer {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.inputContainer input {
+  width: 100%;
+  height: 2rem;
+  padding-left: 0.4rem;
+  border-radius: 6px;
+  border: 0px solid black;
+}
+.inputContainer input::placeholder {
+  font-family: "Raleway", sans-serif;
+}
+.inputContainer input:focus {
+  outline: none;
+  border: 1px solid black;
+}
+.inputSubmit {
+  width: 35%;
+  height: 2.25rem;
+  font-family: "Raleway", sans-serif;
+  letter-spacing: 0.1rem;
+  font-size: 1rem;
+  text-transform: uppercase;
+  color: white;
+  outline: none;
+  border: 1px solid rgba(0, 0, 0, 0.384);
+  border-radius: 4px;
+  box-shadow: 4px 4px #a1a1a1;
+  transition: all 0.4s ease-out;
+  background-image: radial-gradient(
+    circle,
+    #3cc380,
+    #3ac18c,
+    #39c096,
+    #3ac1a0,
+    #3cc3a9
+  );
+}
+.inputSubmit:hover {
+  transform: scale(1.02);
+  cursor: pointer;
+}
+.errorMsg {
+  position: absolute;
+  top: -1.25rem;
+  left: 0;
+  color: #da4343;
+  font-size: 0.8rem;
+  margin-block-start: 0em;
+  margin-block-end: 0em;
+}
+.blob {
+  position: absolute;
+  z-index: 0;
+}
+@media (max-width: 992px) {
+  .errorMsg {
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .errorMsg {
+    font-size: 0.7rem;
+  }
+  .loginForm {
+    padding: 3rem 1.5rem 2.5rem 1.5rem;
+    width: 80%;
+  }
+  .loginForm > * {
+    width: 100%;
+  }
+  .inputSubmit {
+    width: 50%;
+  }
+}
+
+@media (max-width: 576px) {
 }

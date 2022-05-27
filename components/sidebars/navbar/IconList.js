@@ -5,6 +5,7 @@ import { AiTwotoneHome } from "react-icons/ai";
 import { BsInfoCircleFill } from "react-icons/bs";
 import { ImNewspaper } from "react-icons/im";
 import { RiLogoutBoxRLine } from "react-icons/ri";
+import { signOut } from "next-auth/client";
 
 const IconList = () => {
   return (
@@ -24,11 +25,9 @@ const IconList = () => {
           <Icon symbol={<ImNewspaper />} name="News"></Icon>
         </a>
       </Link>
-      <Link href="/logout">
-        <a>
-          <Icon symbol={<RiLogoutBoxRLine />} name="Logout"></Icon>
-        </a>
-      </Link>
+      <div className={classes.logout} onClick={() => signOut()}>
+        <Icon symbol={<RiLogoutBoxRLine />} name="Logout"></Icon>
+      </div>
     </div>
   );
 };

@@ -17,5 +17,14 @@
 }
 
 .listitemComp {
-    width: 25%;
+  width: auto;
+  padding: 0 0.25rem;
+  text-align: center;
+}
+.bell:hover{
+  transform: scale(1.05);
+  cursor: pointer;
+}
+.listitemComp:first-child {
+  width: 35%;
 }

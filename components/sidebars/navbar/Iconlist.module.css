@@ -1,3 +1,10 @@
 .container {
   width: 100%;
 }
+.logout{
+  width: auto;
+  height: auto;
+}
+.logout:hover{
+  cursor: pointer;
+}

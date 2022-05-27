@@ -86,11 +86,10 @@ const Sortmenu = () => {
           Sort by
         </label>
         <select
-          id="sortWatch"
           value={sortWatch}
           onChange={(event) => sortList(event.target.value)}
           className={classes.watchlistSelect}
-          style={isNight ? { color: "white" } : null}
+          style={isNight ? { color: "white", borderColor: "white" } : null}
         >
           <option value="recent">Recently Added</option>
           <option value="first">First Added</option>

@@ -1,16 +1,18 @@
 import { createContext, useState } from "react";
-import { v4 as uuidv4 } from "uuid";
+import cloneDeep from "lodash/cloneDeep";
 
 const WatchContext = createContext();
 export function WatchContextProvider(props) {
   const [watch, setWatch] = useState([]);
-  const [date, setDate] = useState("3month");
+  const [date, setDate] = useState("2year");
   const [searchWatch, setSearchWatch] = useState("");
   const [filteredSearchWatch, setFilteredSearchWatch] = useState([]);
   const [graphInfo, setGraphInfo] = useState("");
+  const [graphData, setGraphData] = useState("");
   const [sortWatch, setSortWatch] = useState("recent");
+  const [notif, setNotif] = useState([]);
+  const [allAlerts, setAllAlerts] = useState([]);
 
-  // Date Range for Api
   const findDateRange = () => {
     const todayDate = new Date();
     let todayYear = todayDate.getFullYear();
@@ -24,48 +26,65 @@ export function WatchContextProvider(props) {
     }
     let lastYearMonths;
     let lastYear;
-    if (date === "month") {
-      if (todayMonth - 1 <= 0) {
-        lastYearMonths = todayMonth - 1 + 12;
-        lastYear = todayYear - 1;
-      } else {
-        lastYearMonths = todayMonth - 1;
-        lastYear = todayYear;
-      }
-    }
-    if (date === "3month") {
-      if (todayMonth - 3 <= 0) {
-        lastYearMonths = todayMonth - 3 + 12;
-        lastYear = todayYear - 1;
-      } else {
-        lastYearMonths = todayMonth - 3;
-        lastYear = todayYear;
-      }
-    }
-    if (date === "6month") {
-      if (todayMonth - 6 <= 0) {
-        lastYearMonths = todayMonth - 6 + 12;
-        lastYear = todayYear - 1;
-      } else {
-        lastYearMonths = todayMonth - 6;
-        lastYear = todayYear;
-      }
-    }
+
     if (date === "year") {
       lastYearMonths = todayMonth;
       lastYear = todayYear - 1;
     }
-    return `from=${lastYear}-${lastYearMonths}-${todayDay}&to=${todayYear}-${todayMonth}-${todayDay}`;
+    if (date === "2year") {
+      lastYearMonths = todayMonth;
+      lastYear = todayYear - 2;
+    }
+    if (date === "3year") {
+      lastYearMonths = todayMonth;
+      lastYear = todayYear - 3;
+    }
+    if (date === "4year") {
+      lastYearMonths = todayMonth;
+      lastYear = todayYear - 4;
+    }
+    if (date === "5year") {
+      lastYearMonths = todayMonth;
+      lastYear = todayYear - 5;
+    }
+
+    return `${lastYear}-${lastYearMonths}-${todayDay}`;
+  };
+
+  const sliceDate = (arr) => {
+    let copyArr = cloneDeep(arr);
+    if (date === "year") {
+      return copyArr.slice(0, 52);
+    }
+    if (date === "2year") {
+      return copyArr.slice(0, 104);
+    }
+    if (date === "3year") {
+      return copyArr.slice(0, 156);
+    }
+    if (date === "4year") {
+      return copyArr.slice(0, 208);
+    }
+    if (date === "5year") {
+      return copyArr.slice(0, 260);
+    }
   };
 
   const context = {
     watchlist: watch,
     setWatchlist: setWatch,
+    allAlerts,
+    setAllAlerts,
+    notif,
+    setNotif,
     graphInfo,
     setGraphInfo,
+    graphData,
+    setGraphData,
     date: date,
     setDateRange: setDate,
     getDate: findDateRange,
+    sliceDate,
     searchWatch,
     setSearchWatch,
     filteredSearchWatch,

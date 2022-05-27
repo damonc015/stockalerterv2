@@ -6,24 +6,6 @@ import GlobalContext from "../../store/globalProvider";
 
 const index = () => {
   const { isNight } = useContext(GlobalContext);
-  const socket = useRef("");
-
-  useEffect(() => {
-    if (socket.current === "") {
-      socket.current = new WebSocket(
-        `wss://ws.finnhub.io?token=c868vsaad3i9fvji44qg`
-      );
-    }
-    socket.current.onopen = () => {
-      console.log("ws connected")
-      socket.current.send(JSON.stringify({'type':'subscribe', 'symbol': 'AAPL'}))
-    }
-    socket.current.onmessage = (e) =>{
-      const msg = JSON.parse(e.data)
-      console.log(msg);
-    }
-    return () => socket.current.close();
-  }, []);
 
   return (
     <div className={classes.container}>
