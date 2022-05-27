@@ -72,6 +72,10 @@ export async function getServerSideProps(context) {
     console.log(e);
   }
   stocklist = await getStockNames();
+  stocklist.forEach((item) => {
+    delete item.exchange;
+    delete item.exchangeShortName;
+  });
   return {
     props: { articles: data, stocklist: stocklist },
   };

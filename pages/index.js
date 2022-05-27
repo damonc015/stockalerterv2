@@ -23,6 +23,8 @@ export default function Home(props) {
     setAllStocks(stocklist);
   }, []);
 
+  console.log(stocklist);
+
   useEffect(() => {
     socket.current = new WebSocket(
       `wss://ws.finnhub.io?token=c868vsaad3i9fvji44qg`
@@ -108,13 +110,17 @@ export default function Home(props) {
   );
 }
 export async function getServerSideProps(context) {
-  let stocklist = await getStockNames();
   const session = await getSession({ req: context.req });
   if (!session) {
     return {
       redirect: { destination: "/login", permanent: false },
     };
   }
+  let stocklist = await getStockNames();
+  stocklist.forEach((item) => {
+    delete item.exchange;
+    delete item.exchangeShortName;
+  });
   return {
     props: { stocklist: stocklist },
   };

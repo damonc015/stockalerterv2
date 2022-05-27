@@ -17,13 +17,14 @@ import dynamic from "next/dynamic";
 
 export default function Stockpage(props) {
   const { isNight } = useContext(GlobalContext);
-  const { allStocks, setAllStocks, setStockHome } =
-    useContext(SearchContext);
+  const { allStocks, setAllStocks, setStockHome } = useContext(SearchContext);
   const { graphInfo, setGraphInfo, setGraphData, date, sliceDate } =
     useContext(WatchContext);
   let { id, stocklist, stockinfo, priceHistory } = props;
 
   const DynamicGraph = dynamic(() => import("../components/graphInfo"));
+
+  console.log(stocklist);
 
   if (
     !stocklist ||
@@ -94,6 +95,10 @@ export async function getServerSideProps(context) {
   }
   let priceHistory, stockinfo, stocklist;
   stocklist = await getStockNames();
+  stocklist.forEach((item) => {
+    delete item.exchange;
+    delete item.exchangeShortName;
+  });
   stockinfo = await getStockData(id);
   priceHistory = await getStockPriceHistory(id);
   return {
