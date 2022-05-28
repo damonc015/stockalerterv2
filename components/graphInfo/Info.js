@@ -22,7 +22,7 @@ const Info = () => {
       symbol: stockHome.symbol,
       price: stockHome.price,
       id: uuidv4(),
-      isNotif: "false"
+      isNotif: "false",
     });
     return setWatchlist(copyWatch);
   }
@@ -62,102 +62,104 @@ const Info = () => {
       </div>
 
       <div
-        className={showInfo ? classes.columnNbutton : classes.hideColNButton}
+        className={classes.columns}
+        style={showInfo ? null : { display: "none" }}
       >
-        <div className={classes.columns}>
-          <div className={classes.column}>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}>Price</span>
-              <span className={classes.columnItemValue}>
-                {graphInfo[0].price
-                  ? "$" + Number.parseFloat(graphInfo[0].price)
-                  : "N/A"}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}> Market Cap</span>
-              <span className={classes.columnItemValue}>
-                {graphInfo[0].marketCap
-                  ? "$" + numComma(graphInfo[0].marketCap)
-                  : "N/A"}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}>Volume</span>
-              <span className={classes.columnItemValue}>
-                {graphInfo[0].volume ? numComma(graphInfo[0].volume) : "N/A"}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}> Avg Volume</span>
-              <span className={classes.columnItemValue}>
-                {graphInfo[0].avgVolume
-                  ? numComma(graphInfo[0].avgVolume)
-                  : "N/A"}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}>Total Shares</span>
-              <span className={classes.columnItemValue}>
-                {graphInfo[0].sharesOutstanding
-                  ? numComma(graphInfo[0].sharesOutstanding)
-                  : "N/A"}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}>P/E Ratio</span>
-              <span className={classes.columnItemValue}>
-                {graphInfo[0].pe
-                  ? Number.parseFloat(graphInfo[0].pe).toFixed(3)
-                  : "N/A"}
-              </span>
-            </p>
-          </div>
-          <div className={classes.column}>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}>Price Avg 50D</span>
-              <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo[0].priceAvg50).toFixed(2)}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}>Price Avg 200D</span>
-              <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo[0].priceAvg200).toFixed(2)}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}>Year High</span>
-              <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo[0].yearHigh).toFixed(2)}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}> Year Low</span>
-              <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo[0].yearLow).toFixed(2)}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}> Day High</span>
-              <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo[0].dayHigh).toFixed(2)}
-              </span>
-            </p>
-            <p className={classes.columnItem}>
-              <span className={classes.columnItemWord}>Day Low</span>
-              <span className={classes.columnItemValue}>
-                ${Number.parseFloat(graphInfo[0].dayLow).toFixed(2)}
-              </span>
-            </p>
-          </div>
+        <div className={classes.column}>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}>Price:</span>
+            <span className={classes.columnItemValue}>
+              {graphInfo[0].price
+                ? "$" + Number.parseFloat(graphInfo[0].price)
+                : "N/A"}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}> Market Cap:</span>
+            <span className={classes.columnItemValue}>
+              {graphInfo[0].marketCap
+                ? "$" + numComma(graphInfo[0].marketCap)
+                : "N/A"}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}>Volume:</span>
+            <span className={classes.columnItemValue}>
+              {graphInfo[0].volume ? numComma(graphInfo[0].volume) : "N/A"}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}> Avg Volume:</span>
+            <span className={classes.columnItemValue}>
+              {graphInfo[0].avgVolume
+                ? numComma(graphInfo[0].avgVolume)
+                : "N/A"}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}>Total Shares:</span>
+            <span className={classes.columnItemValue}>
+              {graphInfo[0].sharesOutstanding
+                ? numComma(graphInfo[0].sharesOutstanding)
+                : "N/A"}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}>P/E Ratio:</span>
+            <span className={classes.columnItemValue}>
+              {graphInfo[0].pe
+                ? Number.parseFloat(graphInfo[0].pe).toFixed(3)
+                : "N/A"}
+            </span>
+          </p>
         </div>
+        <div className={classes.column}>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}>Price Avg 50D:</span>
+            <span className={classes.columnItemValue}>
+              ${Number.parseFloat(graphInfo[0].priceAvg50).toFixed(2)}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}>Price Avg 200D:</span>
+            <span className={classes.columnItemValue}>
+              ${Number.parseFloat(graphInfo[0].priceAvg200).toFixed(2)}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}>Year High:</span>
+            <span className={classes.columnItemValue}>
+              ${Number.parseFloat(graphInfo[0].yearHigh).toFixed(2)}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}> Year Low:</span>
+            <span className={classes.columnItemValue}>
+              ${Number.parseFloat(graphInfo[0].yearLow).toFixed(2)}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}> Day High:</span>
+            <span className={classes.columnItemValue}>
+              ${Number.parseFloat(graphInfo[0].dayHigh).toFixed(2)}
+            </span>
+          </p>
+          <p className={classes.columnItem}>
+            <span className={classes.columnItemWord}>Day Low:</span>
+            <span className={classes.columnItemValue}>
+              ${Number.parseFloat(graphInfo[0].dayLow).toFixed(2)}
+            </span>
+          </p>
+        </div>
+      </div>
 
-        <div className={classes.buttonContainer}>
-          <button className={classes.button} onClick={addWatch}>
-            Add to Watchlist
-          </button>
-        </div>
+      <div
+        className={classes.buttonContainer}
+        style={showInfo ? null : { display: "none" }}
+      >
+        <button className={classes.button} onClick={addWatch}>
+          Add to Watchlist
+        </button>
       </div>
     </div>
   );

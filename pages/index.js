@@ -23,7 +23,6 @@ export default function Home(props) {
     setAllStocks(stocklist);
   }, []);
 
-  console.log(stocklist);
 
   useEffect(() => {
     socket.current = new WebSocket(

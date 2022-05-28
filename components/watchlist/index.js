@@ -14,7 +14,7 @@ const index = () => {
         style={isNight ? { backgroundColor: "rgb(66,66,66)" } : null}
       >
         <div className={classes.title}>
-          <h2>Watchlist</h2>
+          <h2 style={{ padding: ".25rem" }}>Watchlist</h2>
         </div>
         <Sortmenu />
         <List />

@@ -10,10 +10,6 @@ const Graph = () => {
   const DynamicInfo = dynamic(() => import("./Info"));
   return (
     <Fragment>
-      <div
-        ref={topPageRef}
-        style={{ position: "absolute", height: "8vh", top: "0" }}
-      ></div>
       <div className={classes.container}>
         <Title></Title>
         <div className={classes.chartNinfo}>

@@ -24,8 +24,6 @@ export default function Stockpage(props) {
 
   const DynamicGraph = dynamic(() => import("../components/graphInfo"));
 
-  console.log(stocklist);
-
   if (
     !stocklist ||
     !stockinfo ||
